@@ -87,7 +87,7 @@ def validate_bug(bug_report):
 
 
 if __name__ == "__main__":
-    readme()
+    #readme()
 
     bugSummary=report_bug()
     #print(bugSummary)
