@@ -85,6 +85,27 @@ def validate_bug(bug_report):
         return "Review"
 
 
+def inform_team(bug_report, validation_result):
+    print("Step 3: Informing development team...")
+    # Simulate sending bug report to team
+    print(f"Bug sent to team. Severity: {bug_report['severity']}, Action: {validation_result}")
+    # Simulate response time logic
+    if bug_report['severity'].lower() == "critical":
+        print("Team will respond ASAP due to critical priority.")
+    else:
+        print("Team will respond within standard timeframe.")
+
+def develop_fix(bug_report):
+    print("Step 4: Developing fix for the bug...")
+    # Simulate fix development
+    print("Development team is working on a fix...")
+    # You could add more logic here
+
+def inform_user(bug_report):
+    print("Step 5: Informing user...")
+    # Simulate notifying user
+    print("User has been notified that the bug is addressed/fixed.")
+
 
 if __name__ == "__main__":
     #readme()
@@ -92,3 +113,6 @@ if __name__ == "__main__":
     bugSummary=report_bug()
     #print(bugSummary)
     validationResult=validate_bug(bugSummary)
+    inform_team(bugSummary, validationResult)
+    develop_fix(bugSummary)
+    inform_user(bugSummary)
