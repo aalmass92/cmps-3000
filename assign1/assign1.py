@@ -61,6 +61,9 @@ def validate_bug(bug_report):
         return "Closed"
     elif severity_flag == 0 and repro_flag == 0 and attachment_flag == 1:
         print("Has evidence but can't reproduce. Ask how to reproduce.")
+        # Force bug description to be non-empty
+        while not bug_report["description"].strip():
+            bug_report["description"] = input("Describe the bug (cannot be empty): ")
         return "Info Requested"
     elif severity_flag == 0 and repro_flag == 1 and attachment_flag == 0:
         print("Can reproduce but no evidence. Ask for screenshot/log.")
@@ -107,12 +110,15 @@ def inform_user(bug_report):
     print("User has been notified that the bug is addressed/fixed.")
 
 
-if __name__ == "__main__":
-    #readme()
+import sys
+# ...existing code...
 
-    bugSummary=report_bug()
-    #print(bugSummary)
-    validationResult=validate_bug(bugSummary)
+if __name__ == "__main__":
+    bugSummary = report_bug()
+    validationResult = validate_bug(bugSummary)
+    if validationResult == "Closed":
+        print("Exiting program after step 2: Bug is closed.")
+        sys.exit()
     inform_team(bugSummary, validationResult)
     develop_fix(bugSummary)
     inform_user(bugSummary)
