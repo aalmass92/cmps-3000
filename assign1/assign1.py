@@ -10,17 +10,14 @@ def report_bug():
     severity = input("Severity level (Critical, Moderate, Low): ").capitalize()
     is_reproducible = input("Is the bug reproducible? (True/False): ").strip().lower() == "true"
     has_attachment = input("Does the report include an attachment? (True/False): ").strip().lower() == "true"
-    report_frequency = input("Report frequency (Low, Medium, High): ").capitalize()
-    system_impact = input("System impact (One User, Multiple Users, Entire System): ").capitalize()
+
 
     print("\nStep 1: Bug reported by user.")
     return {
         "description": bug_description,
         "severity": severity,
         "is_reproducible": is_reproducible,
-        "has_attachment": has_attachment,
-        "report_frequency": report_frequency,
-        "system_impact": system_impact
+        "has_attachment": has_attachment
     }
 
 
