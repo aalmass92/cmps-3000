@@ -1,12 +1,8 @@
-
-
-def readme():
-    print("This is a sample README function.")
+import sys
 
 
 
 #The following functions are part of a bug reporting workflow.
-
 def report_bug():
     print("=== Bug Reporting ===")
     bug_description = input("Describe the bug: ")
@@ -28,21 +24,7 @@ def report_bug():
     }
 
 
-
-def validate_bug(bug_report):
-    print("Step 2: Validating bug...")
-
-    severity = bug_report["severity"].lower()
-    is_reproducible = bug_report["is_reproducible"]
-    has_attachment = bug_report["has_attachment"]
-
-    # Convert severity to binary: 1 = Critical, 0 = Moderate/Low
-    severity_flag = 1 if severity == "critical" else 0
-    repro_flag = 1 if is_reproducible else 0
-    attachment_flag = 1 if has_attachment else 0
-
-    # Decision matrix logic
-    
+#This function validates the bug report based on given criteria.    
 def validate_bug(bug_report):
     print("Step 2: Validating bug...")
 
@@ -62,8 +44,13 @@ def validate_bug(bug_report):
     elif severity_flag == 0 and repro_flag == 0 and attachment_flag == 1:
         print("Has evidence but can't reproduce. Ask how to reproduce.")
         # Force bug description to be non-empty
-        while not bug_report["description"].strip():
+        attempts = 0
+        while not bug_report["description"].strip() and attempts < 3:
             bug_report["description"] = input("Describe the bug (cannot be empty): ")
+            attempts += 1
+        if not bug_report["description"].strip():
+            print("No description provided after 3 attempts. Exiting.")
+            sys.exit()
         return "Info Requested"
     elif severity_flag == 0 and repro_flag == 1 and attachment_flag == 0:
         print("Can reproduce but no evidence. Ask for screenshot/log.")
@@ -87,7 +74,7 @@ def validate_bug(bug_report):
         print("Unknown combination. Needs manual review.")
         return "Review"
 
-
+#This function informs the development team about the bug.
 def inform_team(bug_report, validation_result):
     print("Step 3: Informing development team...")
     # Simulate sending bug report to team
@@ -98,21 +85,20 @@ def inform_team(bug_report, validation_result):
     else:
         print("Team will respond within standard timeframe.")
 
+#This function simulates the development of a fix for the bug.
 def develop_fix(bug_report):
     print("Step 4: Developing fix for the bug...")
     # Simulate fix development
     print("Development team is working on a fix...")
     # You could add more logic here
 
+#This function informs the user about the status of their bug report.
 def inform_user(bug_report):
     print("Step 5: Informing user...")
     # Simulate notifying user
     print("User has been notified that the bug is addressed/fixed.")
 
-
-import sys
-# ...existing code...
-
+# Main workflow
 if __name__ == "__main__":
     bugSummary = report_bug()
     validationResult = validate_bug(bugSummary)

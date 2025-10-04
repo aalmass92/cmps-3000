@@ -20,3 +20,7 @@ Collect bug report details from the user, input including description, severity,
 Validate the bug report by checking its severity, reproducibility, and whether it has an attachment.
 The main focus is on guiding the user through reporting a bug and validating the report based on user input.
 
+## Authors
+
+- [Jonathan Tano]
+- [Ahmed Almass]
