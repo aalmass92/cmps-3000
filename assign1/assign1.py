@@ -1,6 +1,5 @@
 import sys
-
-
+import time
 
 #The following functions are part of a bug reporting workflow.
 def report_bug():
@@ -24,7 +23,8 @@ def report_bug():
 #This function validates the bug report based on given criteria.    
 def validate_bug(bug_report):
     print("Step 2: Validating bug...")
-
+    time.sleep(2) 
+    
     severity = bug_report["severity"].lower()
     is_reproducible = bug_report["is_reproducible"]
     has_attachment = bug_report["has_attachment"]
@@ -74,24 +74,28 @@ def validate_bug(bug_report):
 #This function informs the development team about the bug.
 def inform_team(bug_report, validation_result):
     print("Step 3: Informing development team...")
+    time.sleep(2) 
     # Simulate sending bug report to team
     print(f"Bug sent to team. Severity: {bug_report['severity']}, Action: {validation_result}")
     # Simulate response time logic
     if bug_report['severity'].lower() == "critical":
         print("Team will respond ASAP due to critical priority.")
+        time.sleep(2) 
     else:
         print("Team will respond within standard timeframe.")
 
 #This function simulates the development of a fix for the bug.
 def develop_fix(bug_report):
     print("Step 4: Developing fix for the bug...")
+    time.sleep(2) 
     # Simulate fix development
     print("Development team is working on a fix...")
-    # You could add more logic here
-
+    time.sleep(5) 
+    
 #This function informs the user about the status of their bug report.
 def inform_user(bug_report):
     print("Step 5: Informing user...")
+    time.sleep(2) 
     # Simulate notifying user
     print("User has been notified that the bug is addressed/fixed.")
 
